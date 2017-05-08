@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+<head>
+	<title>AngularJS - HomeDepot Tools</title>
+	<script src="angular.min.js"></script>
+	<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+</head>
+<body ng-controller="myCntrl">
+<h3>{{pageTitle}}</h3>
+<div class="panel panel-default">
+  <!-- Default panel contents -->
+  <div class="panel-heading">HomeDepot Products/Tools</div>
+  <div class="panel-body">
+    <p>Tools By Category</p>
+  </div>
+
+  <!-- Table -->
+  <table class="table">
+    <tr>
+    <th>Id</th>
+    <th>Product Name</th>
+    <th>Proudct Code</th>
+    <th>Release Date</th>
+    <th>Description</th>
+    <th>Price</th>
+    <th>StarRating</th>
+    <th>Image</th>
+    </tr>
+    <tr ng-repeat="prod in products">
+    <td>{{prod.productId}}</td>
+    <td>{{prod.productName}}</td>
+    <td>{{prod.productCode}}</td>
+    <td>{{prod.releaseDate}}</td>
+    <td>{{prod.description}}</td>
+    <td>{{prod.price | currency:'$':true}}</td>
+    <td>{{prod.starRating}}</td>
+    <td><img alt="" ng-src="{{prod.imageUrl}} with="55px" height="50px" </td>
+    </tr>
+  </table>
+</div>
+
+<script>
+var myApp = angular.module("myApp",[]);
+myApp.controller("myCntrl",function($scope){
+	$scope.pageTitle="HomeDepot Product Management";
+	$scope.products = [
+  {
+        "productId": 1,
+        "productName": "Leaf Rake",
+        "productCode": "GDN-0011",
+        "releaseDate": "March 19, 2016",
+        "description": "Leaf rake with 48-inch wooden handle.",
+        "price": 19.95,
+        "starRating": 3.2,
+        "imageUrl": "http://openclipart.org/image/300px/svg_to_png/26215/Anonymous_Leaf_Rake.png"
+    },
+    {
+        "productId": 5,
+        "productName": "Hammer",
+        "productCode": "TBX-0048",
+        "releaseDate": "May 21, 2016",
+        "description": "Curved claw steel hammer",
+        "price": 8.9,
+        "starRating": 4.8,
+        "imageUrl": "http://openclipart.org/image/300;px/svg_to_png/73/rejon_Hammer.png"
+    }
+	];
+});
+
+</script>
+</body>
+</html>
